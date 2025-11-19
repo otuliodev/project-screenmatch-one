@@ -1,6 +1,4 @@
-package br.com.alura.screenmatch.modelos;
-
-import br.com.alura.screenmatch.calculos.Classificavel;
+package br.com.alura.screenmatch.calculos;
 
 public class FiltroRecomendacao {
     public void filtrar(Classificavel classificavel){

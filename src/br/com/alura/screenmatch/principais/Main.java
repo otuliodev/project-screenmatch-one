@@ -1,14 +1,16 @@
+package br.com.alura.screenmatch.principais;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
-import br.com.alura.screenmatch.modelos.FiltroRecomendacao;
+import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Serie;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("Invocação do Mal 5");
-        meuFilme.setAnoDeLancamento(2025);
+        Filme meuFilme = new Filme("Invocação do Mal", 2025);
         meuFilme.setDuracaoEmMinutos(150);
 
         meuFilme.exibeFichaTecnica();
@@ -19,21 +21,15 @@ public class Main {
         System.out.println(meuFilme.getTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
 
-        Filme matrix = new Filme();
-        matrix.setNome("The Matrix");
-        matrix.setAnoDeLancamento(1999);
+        Filme matrix = new Filme("The Matrix", 1999);
         matrix.setDuracaoEmMinutos(135);
         matrix.setIncluidoNoPlano(true);
 
-        Filme johnWick = new Filme();
-        johnWick.setNome("John Wick");
-        johnWick.setAnoDeLancamento(2014);
+        Filme johnWick = new Filme("John Wick", 2014);
         johnWick.setDuracaoEmMinutos(101);
         johnWick.setIncluidoNoPlano(true);
 
-        Serie laCasa = new Serie();
-        laCasa.setNome("La Casa de Papel");
-        laCasa.setAnoDeLancamento(2017);
+        Serie laCasa = new Serie("La Casa de Papel", 2017);
         laCasa.setIncluidoNoPlano(true);
         laCasa.setAtiva(true);
         laCasa.setTemporadas(5);
@@ -55,5 +51,19 @@ public class Main {
 
         FiltroRecomendacao filtro = new FiltroRecomendacao();
         filtro.filtrar(primeiro);
+
+        var filmeDoPaulo = new Filme("Dogville", 2003);
+        filmeDoPaulo.setDuracaoEmMinutos(200);
+        filmeDoPaulo.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDoPaulo);
+        listaDeFilmes.add(matrix);
+        listaDeFilmes.add(johnWick);
+        listaDeFilmes.add(meuFilme);
+
+        System.out.println("Tamanho da lista: "+listaDeFilmes.size());
+        System.out.println("Primerio filme: "+listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
     }
 }
